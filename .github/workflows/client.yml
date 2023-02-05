@@ -33,4 +33,4 @@ jobs: #! 어떤 job을 할 지
             --region ap-northeast-2 \
             build s3://fe-37-wlgus3-s3 \ #!개인 버킷 이름 
             --delete
-        working-directory: ./my-agora-state-client #! 어떤 디렉토리를 돌릴것이냐 
+        working-directory: ./my-agora-states-client #! 어떤 디렉토리를 돌릴것이냐 
