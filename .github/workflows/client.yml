@@ -25,8 +25,8 @@ jobs: #! 어떤 job을 할 지
           aws --version #!aws 버전체크 
       - name: Sync Bucket
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AKIASEBV4CULIVEW3MVV }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.XArNRD/PrzB+IC0KwhHbAGhJOOWjaiU94EPyd4HG }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_EC2_METADATA_DISABLED: true
         run: |
           aws s3 sync \ #! s3와 동기화 시켜주겠다.
