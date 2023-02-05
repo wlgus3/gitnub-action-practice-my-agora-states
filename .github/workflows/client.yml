@@ -10,6 +10,10 @@ jobs: #! 어떤 job을 할 지
     steps:
       - name: Checkout source code.
         uses: actions/checkout@v2
+      - name: Setup Node.js 16
+        uses: actions/setup-node@v1
+        with:
+          node-version : 16
       - name: Install dependencies
         run: npm install #!run: ->어떤실행할거 ?
         working-directory: ./my-agora-states-client
