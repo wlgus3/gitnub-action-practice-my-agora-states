@@ -1,36 +1,36 @@
 # .github/workflows/client.yml
-name: client  #!워크플로우 이름
-on: #! 언제 job을 작동시킬지 
+name: client 
+on: # 언제 job을 작동시킬지 
   push:
-    branches: #! branches -> 브렌치 어디로 할거냐 
+    branches: # branches -> 브렌치 어디로 할거냐 
       - reference
-jobs: #! 어떤 job을 할 지
+jobs: # 어떤 job을 할 지
   build:
     runs-on: ubuntu-20.04 #작업 실행할 깃헙의 호스팅 러너
     steps:
       - name: Checkout source code.
         uses: actions/checkout@v2
       - name: Install dependencies
-        run: npm install #!run: ->어떤실행할거 ?
+        run: npm install
         working-directory: ./my-agora-states-client
       - name: Build
         run: npm run build
         working-directory: ./my-agora-states-client
       - name: SHOW AWS CLI VERSION
-        env: #!env ->aws 버전 체크 -> 그다지 필요하지는 않음 
+        env: #env ->aws 버전 체크 -> 그다지 필요하지는 않음 
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_EC2_METADATA_DISABLED: true
         run: |
-          aws --version #!aws 버전체크 
+          aws --version
       - name: Sync Bucket
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_EC2_METADATA_DISABLED: true
         run: |
-          aws s3 sync \ #! s3와 동기화 시켜주겠다.
+          aws s3 sync \
             --region ap-northeast-2 \
-            build s3://fe-37-wlgus3-s3 \ #!개인 버킷 이름 
+            build s3://fe-37-wlgus3-s3 \
             --delete
-        working-directory: ./my-agora-states-client #! 어떤 디렉토리를 돌릴것이냐 
+        working-directory: ./my-agora-states-client
