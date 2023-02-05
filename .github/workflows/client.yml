@@ -3,7 +3,7 @@ name: client  #!워크플로우 이름
 on: #! 언제 job을 작동시킬지 
   push:
     branches: #! branches -> 브렌치 어디로 할거냐 
-      - referance
+      - reference
 jobs: #! 어떤 job을 할 지
   build:
     runs-on: ubuntu-20.04 #작업 실행할 깃헙의 호스팅 러너
